@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Niytiee 💗</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg,#ffe0ec,#ffc4da,#fff0f5);
+  color: #a83263;
+}
+
+.heart {
+  position: fixed;
+  bottom: -40px;
+  pointer-events: none;
+  z-index: 0;
+  animation: float 7s linear forwards;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) rotate(0); opacity: 0; }
+  15% { opacity: .8; }
+  100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+.card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 470px;
+  padding: 38px 25px;
+  text-align: center;
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(15px);
+  border: 2px solid white;
+  border-radius: 30px;
+  box-shadow: 0 15px 50px rgba(194,65,117,.2);
+  animation: appear 1s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.big-heart {
+  font-size: 65px;
+  margin-bottom: 15px;
+  animation: beat 1.3s infinite;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.2); }
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(42px, 10vw, 55px);
+  color: #e34c88;
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 35px;
+  color: #df4380;
+  margin: 18px 0;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #92536c;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: none;
+  border-radius: 50px;
+  padding: 13px 26px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+
+button:active {
+  transform: scale(.95);
+}
+
+.yes {
+  background: linear-gradient(45deg,#ff5e9c,#e83e83);
+  color: white;
+  box-shadow: 0 7px 20px #f3a0c2;
+}
+
+.yes:hover { transform: scale(1.1); }
+
+.no {
+  background: white;
+  color: #df4380;
+  border: 1px solid #ffc0d9;
+}
+
+.small {
+  font-size: 12px;
+  margin-top: 25px;
+  color: #bd7290;
+}
+
+#success {
+  display: none;
+  animation: appear 1s ease;
+}
+
+.love-note {
+  margin-top: 22px;
+  padding: 20px;
+  background: #fff0f6;
+  border-radius: 20px;
+  font-size: 14px;
+  line-height: 2;
+  color: #a34e70;
+}
+
+.music-btn {
+  margin-top: 22px;
+  background: linear-gradient(45deg,#ff8bb8,#ec5b99);
+  color: white;
+  box-shadow: 0 5px 15px #f3a0c2;
+}
+
+.music-btn:hover {
+  transform: scale(1.05);
+}
+
+.footer {
+  margin-top: 25px;
+  font-size: 12px;
+  color: #bd7290;
+}
+
+#musicStatus {
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.confetti {
+  position: fixed;
+  z-index: 5;
+  top: -30px;
+  pointer-events: none;
+  animation: fall 4s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@media(max-width:480px) {
+  .card { padding: 30px 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="Haareya Meri Pyaari Bindu 320 Kbps.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+
+  <!-- FIRST SCREEN -->
+  <div id="question">
+
+    <div class="big-heart">💗</div>
+
+    <h1>Hey Niytiee...</h1>
+
+    <p>
+      I have something special to ask you.<br>
+      Something straight from my heart. 🥺
+    </p>
+
+    <h2>Will You Be Mine?</h2>
+
+    <p>
+      Niytiee, you make my world more beautiful.
+      Your smile is my favourite thing.
+      You are someone really special to me. ❤️
+    </p>
+
+    <div class="buttons">
+      <button class="yes" onclick="sayYes()">
+        YES! 💖
+      </button>
+
+      <button class="no" id="noBtn" onclick="sayNo()">
+        No 🙈
+      </button>
+    </div>
+
+    <div class="small">
+      Made with ❤️ by Meet
+    </div>
+
+  </div>
+
+  <!-- SUCCESS SCREEN -->
+  <div id="success">
+
+    <div class="big-heart">💞</div>
+
+    <h1>YAYYYY!!!</h1>
+
+    <h2>You made my day! 🥹</h2>
+
+    <p>
+      Niytiee, you have no idea how happy
+      this makes me!
+    </p>
+
+    <div class="love-note">
+      Dear Niytiee 💌
+
+      <br><br>
+
+      I don't know what the future holds,
+      but I know that every moment with you
+      would be beautiful.
+
+      Thank you for being you.
+
+      Keep smiling, because your smile
+      means the world to me.
+
+      <br><br>
+
+      Forever sending you love ❤️
+
+      <br><br>
+
+      Yours,<br>
+      <b>Meet 💗</b>
+    </div>
+
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+      🎵 Play Romantic Music
+    </button>
+
+    <p id="musicStatus">
+      A special song for you 🌸
+    </p>
+
+    <div class="footer">
+      A little surprise, made just for you 🌷
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+// FLOATING HEARTS
+const emojis = ["💗","💕","💖","🌸","💘","❤️"];
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+
+  heart.innerText =
+    emojis[Math.floor(Math.random() * emojis.length)];
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+  heart.style.fontSize = (15 + Math.random() * 20) + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 10000);
+}
+
+setInterval(createHeart, 350);
+
+
+// YES BUTTON
+function sayYes() {
+
+  document.getElementById("question").style.display = "none";
+  document.getElementById("success").style.display = "block";
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+  // Celebration
+  for(let i = 0; i < 70; i++) {
+    setTimeout(createConfetti, i * 40);
+  }
+
+  // Music starts after YES click
+  const music = document.getElementById("bgMusic");
+
+  music.play().then(() => {
+    updateMusicButton(true);
+  }).catch(() => {
+    document.getElementById("musicStatus").innerText =
+      "Tap the music button to start your song 🎵";
+  });
+}
+
+
+// NO BUTTON
+let noCount = 0;
+
+function sayNo() {
+
+  noCount++;
+
+  const messages = [
+    "Are you sure? 🥺",
+    "Please think again! 💗",
+    "Ek baar YES kar do na! 🙈",
+    "Pretty please? 💕",
+    "I'll wait for your answer ❤️"
+  ];
+
+  document.getElementById("noBtn").innerText =
+    messages[(noCount - 1) % messages.length];
+}
+
+
+// CONFETTI
+function createConfetti() {
+
+  const item = document.createElement("div");
+  item.className = "confetti";
+
+  item.innerText =
+    emojis[Math.floor(Math.random() * emojis.length)];
+
+  item.style.left = Math.random() * 100 + "vw";
+  item.style.fontSize = (15 + Math.random() * 25) + "px";
+
+  document.body.appendChild(item);
+
+  setTimeout(() => item.remove(), 4000);
+}
+
+
+// MUSIC CONTROLS
+const music = document.getElementById("bgMusic");
+
+function updateMusicButton(playing) {
+
+  document.getElementById("musicBtn").innerText =
+    playing ? "⏸ Pause Music" : "H";
+
+  document.getElementById("musicStatus").innerText =
+    playing ? "Playing a song for you 💗" : "Music paused 🌸";
+}
+
+function toggleMusic() {
+
+  if (music.paused) {
+
+    music.play().then(() => {
+      updateMusicButton(true);
+    }).catch(() => {
+      document.getElementById("musicStatus").innerText =
+        "H";
+    });
+
+  } else {
+
+    music.pause();
+    updateMusicButton(false);
+
+  }
+}
+
+</script>
+
+</body>
+</html>
